@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Tarea;
 
 class controladorTarea extends Controller
@@ -32,7 +33,8 @@ class controladorTarea extends Controller
 
     public function show()
     {
-        return view('tareas');
+        $queryTareas = DB::table('tareas')->get();
+        return view('tareas',['tareas' => $queryTareas]);
     }
 
     /**
@@ -66,6 +68,7 @@ class controladorTarea extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('tareas')->where('id', '=', $id)->delete();
+        return redirect('/');
     }
 }

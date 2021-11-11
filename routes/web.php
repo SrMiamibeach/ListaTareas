@@ -16,6 +16,6 @@ use App\Http\Controllers\controladorTarea;
 
 Route::get('/', [controladorTarea::class,'show'])->name('alltareas');
 
-Route::post('/tarea', [controladorTarea::class,'create'])->name('alltareas');
+Route::post('/tarea', [controladorTarea::class,'create'])->name('addtareas');
 
-//Route::delete('/task/id', [Tareas::class,'delete'])->name('alltareas');
+Route::delete('/tarea/{id}', [controladorTarea::class,'destroy'])->name('deletetareas');
