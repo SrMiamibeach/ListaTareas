@@ -33,7 +33,8 @@ class controladorTarea extends Controller
 
     public function show()
     {
-        $queryTareas = DB::table('tareas')->get();
+        // $queryTareas = DB::table('tareas')->get();KC
+        $queryTareas = Tarea::get();
         return view('tareas',['tareas' => $queryTareas]);
     }
 
@@ -68,7 +69,8 @@ class controladorTarea extends Controller
      */
     public function destroy($id)
     {
-        DB::table('tareas')->where('id', '=', $id)->delete();
+        Tarea::destroy($id);
+        // DB::table('tareas')->where('id', '=', $id)->delete();
         return redirect('/');
     }
 }
