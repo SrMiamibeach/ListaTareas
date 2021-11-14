@@ -14,8 +14,14 @@ use App\Http\Controllers\controladorTarea;
 |
 */
 
-Route::get('/', [controladorTarea::class,'show'])->name('alltareas');
+Route::get('/', [controladorTarea::class, 'index'])->name('index');
 
-Route::post('/tarea', [controladorTarea::class,'create'])->name('addtareas');
+Route::get('/showTasks', [controladorTarea::class, 'showTasks'])->name('Tasks');
 
-Route::delete('/tarea/{id}', [controladorTarea::class,'destroy'])->name('deletetareas');
+Route::get('/viewAddTask', [controladorTarea::class, 'showAdd'])->name('Add');
+
+Route::get('/viewAddTask', [controladorTarea::class, 'showAdd'])->name('search');
+
+Route::post('/tarea', [controladorTarea::class, 'create']);
+
+Route::delete('/tarea/{id}', [controladorTarea::class, 'destroy']);

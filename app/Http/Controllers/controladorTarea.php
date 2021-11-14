@@ -15,7 +15,7 @@ class controladorTarea extends Controller
      */
     public function index()
     {
-        //
+        return view('index');
     }
 
     /**
@@ -28,14 +28,23 @@ class controladorTarea extends Controller
         Tarea::create([
             'nombre' => $request->get('nombre')
         ]);
-        return redirect('/');
+        return redirect('/viewAddTask');
     }
 
-    public function show()
+    public function showTasks()
     {
         // $queryTareas = DB::table('tareas')->get();KC
         $queryTareas = Tarea::get();
-        return view('tareas',['tareas' => $queryTareas]);
+        return view('showTasks', ['tareas' => $queryTareas]);
+    }
+
+    public function showAdd()
+    {
+        return view('add');
+    }
+    public function showSearch()
+    {
+        return view('search');
     }
 
     /**
@@ -71,6 +80,6 @@ class controladorTarea extends Controller
     {
         Tarea::destroy($id);
         // DB::table('tareas')->where('id', '=', $id)->delete();
-        return redirect('/');
+        return redirect('/showTasks');
     }
 }
