@@ -25,6 +25,10 @@ class controladorTarea extends Controller
      */
     public function create(Request $request)
     {
+        $request->validate([
+            'nombre' => 'required'
+        ]);
+
         Tarea::create([
             'nombre' => $request->get('nombre')
         ]);
@@ -42,10 +46,15 @@ class controladorTarea extends Controller
     {
         return view('addTaskForm');
     }
-    public function showSearch(Request $request)
+    public function showSearchForm()
     {
-        $searchedQuery = Tarea::where('','like',$request->get('search'))->get();
         return view('searchForm');
+    }
+
+    public function showSearchTask(Request $request)
+    {
+        $searchedQuery = Tarea::where('nombre', 'like', '%' . $request->get('search') . '%')->get();
+        return view('searchedTask', ['tareas' => $searchedQuery]);
     }
 
     /**
@@ -77,10 +86,10 @@ class controladorTarea extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, $route)
     {
         Tarea::destroy($id);
         // DB::table('tareas')->where('id', '=', $id)->delete();
-        return redirect('/showTasks');
+        return redirect('/' . $route);
     }
 }

@@ -1,6 +1,6 @@
-@extends('index')
+@extends('searchForm')
 
-@section('show')
+@section('searchedTasks')
 <div class="row d-flex flex-column align-content-center mt-2">
     <div class="col-4 bg-light border">
         <p class="h4 pt-2">Current Tasks</p>
@@ -19,7 +19,7 @@
                 <tr>
                     <td>{{ $tarea->nombre }}</td>
                     <td class="text-center">
-                        <form method="POST" action="/tarea/{{$tarea->id}}/showTasks">
+                        <form method="POST" action="/tarea/{{$tarea->id}}/showSearchTask">
                             {{ @csrf_field() }}
                             @method('delete')
                             <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</button>
@@ -28,6 +28,7 @@
                 </tr>
                 @endforeach
                 @endif
+
             </tbody>
         </table>
     </div>

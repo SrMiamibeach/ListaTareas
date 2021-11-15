@@ -8,8 +8,14 @@
         <strong>Task</strong>
         <form method="POST" action="/tarea">
             {{ @csrf_field() }}
-            <input type="text" name="nombre" class="form-control" />
+
+            <input type="text" name="nombre" class="form-control" placeholder="Task Name" />
             <br>
+            @error('nombre')
+            <div class="alert alert-danger" role="alert">
+                Do not leave empty
+            </div>
+            @enderror
             <button type="submit" class="btn border ">Add Task</button>
         </form>
     </div>

@@ -7,13 +7,12 @@
     </div>
     <div class="col-4 border pt-2 pb-4">
         <strong>Search</strong>
-        <form>
-            <input type="text" name="nombre" class="form-control" placeholder="enter your search" name="search"/>
+        <form action="/searchedTask">
+            <input type="text" name="search" class="form-control" placeholder="enter your search" />
             <br>
             <button type="submit" class="btn border ">Search</button>
         </form>
-
     </div>
 </div>
+@yield('searchedTasks')
 @endsection
-@yield('searchQuery')
