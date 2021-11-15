@@ -20,8 +20,9 @@ Route::get('/showTasks', [controladorTarea::class, 'showTasks'])->name('Tasks');
 
 Route::get('/viewAddTask', [controladorTarea::class, 'showAdd'])->name('Add');
 
-Route::get('/viewAddTask', [controladorTarea::class, 'showAdd'])->name('search');
-
 Route::post('/tarea', [controladorTarea::class, 'create']);
+
+Route::get('/showSearchTask', [controladorTarea::class, 'showSearch'])->name('search');
+
 
 Route::delete('/tarea/{id}', [controladorTarea::class, 'destroy']);

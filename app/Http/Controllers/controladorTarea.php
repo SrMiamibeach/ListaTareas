@@ -40,11 +40,12 @@ class controladorTarea extends Controller
 
     public function showAdd()
     {
-        return view('add');
+        return view('addTaskForm');
     }
-    public function showSearch()
+    public function showSearch(Request $request)
     {
-        return view('search');
+        $searchedQuery = Tarea::where('','like',$request->get('search'))->get();
+        return view('searchForm');
     }
 
     /**
