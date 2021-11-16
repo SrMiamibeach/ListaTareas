@@ -10,18 +10,21 @@ class controladorTarea extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
         return view('layouts.index');
     }
+    /**
+     * Show the form for creating a new task
+     */
+    public function showAdd()
+    {
+        return view('addTaskForm');
+    }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Create a new task
      */
     public function create(Request $request)
     {
@@ -35,6 +38,9 @@ class controladorTarea extends Controller
         return redirect('/viewAddTask');
     }
 
+    /**
+     *  Shows the current tasks
+     */
     public function showTasks()
     {
         // $queryTareas = DB::table('tareas')->get();KC
@@ -42,42 +48,21 @@ class controladorTarea extends Controller
         return view('showTasks', ['tareas' => $queryTareas]);
     }
 
-    public function showAdd()
-    {
-        return view('addTaskForm');
-    }
+    /**
+     * Show the form for search tasks
+     */
     public function showSearchForm()
     {
         return view('searchForm');
     }
 
+    /**
+     *  Makes the task search
+     */
     public function showSearchTask(Request $request)
     {
         $searchedQuery = Tarea::where('nombre', 'like', '%' . $request->get('search') . '%')->get();
         return view('searchedTask', ['tareas' => $searchedQuery]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
     }
 
     /**
@@ -89,7 +74,6 @@ class controladorTarea extends Controller
     public function destroy($id, $route)
     {
         Tarea::destroy($id);
-        // DB::table('tareas')->where('id', '=', $id)->delete();
         return redirect('/' . $route);
     }
 }
