@@ -1,4 +1,4 @@
-@extends('index')
+@extends('layouts.index')
 
 @section('show')
 <div class="row d-flex flex-column align-content-center mt-2">

@@ -1,4 +1,4 @@
-@extends('index')
+@extends('layouts.index')
 @section('addTasks')
 <div class="row d-flex flex-column align-content-center">
     <div class="col-4 bg-light border">

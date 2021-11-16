@@ -1,4 +1,4 @@
-@extends('index')
+@extends('layouts.index')
 
 @section('show')
 <div class="row d-flex flex-column align-content-center mt-2">
@@ -15,18 +15,7 @@
             </thead>
             <tbody class="align-middle">
                 @if(count($tareas) > 0)
-                @foreach($tareas as $tarea)
-                <tr>
-                    <td>{{ $tarea->nombre }}</td>
-                    <td class="text-center">
-                        <form method="POST" action="/tarea/{{$tarea->id}}/showTasks">
-                            {{ @csrf_field() }}
-                            @method('delete')
-                            <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</button>
-                        </form>
-                    </td>
-                </tr>
-                @endforeach
+                @each('partials.button', $tareas, 'tarea')
                 @endif
             </tbody>
         </table>
