@@ -18,12 +18,12 @@ Route::get('/', [controladorTarea::class, 'index'])->name('index');
 
 Route::get('/showTasks', [controladorTarea::class, 'showTasks'])->name('Tasks');
 
-Route::get('/viewAddTask', [controladorTarea::class, 'showAdd'])->name('Add');
+Route::get('/viewAddTask', [controladorTarea::class, 'create'])->name('Add');
 
-Route::post('/tarea', [controladorTarea::class, 'create']);
+Route::post('/tarea', [controladorTarea::class, 'store']);
 
-Route::get('/showSearchTask', [controladorTarea::class, 'showSearchForm'])->name('search');
+Route::get('/showSearchTask', [controladorTarea::class, 'showForm'])->name('search');
 
-Route::get('/searchedTask', [controladorTarea::class, 'showSearchTask'])->name('search');
+Route::get('/searchedTask', [controladorTarea::class, 'show'])->name('search');
 
 Route::delete('/tarea/{id}/{route}', [controladorTarea::class, 'destroy']);

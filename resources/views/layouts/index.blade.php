@@ -22,7 +22,7 @@
                         <div class="collapse navbar-collapse" id="navbarScroll">
                             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 150px;">
                                 <li class="nav-item"><a href="/viewAddTask" class="nav-link">New Tasks</a></li>
-                                <li class="nav-item"><a href="/showTasks" class="nav-link">Tasks List</a></li>
+                                <li class="nav-item"><a href="/" class="nav-link">Tasks List</a></li>
                                 <li class="nav-item"><a href="/showSearchTask" class="nav-link">Search Task</a></li>
                             </ul>
                         </div>

@@ -13,12 +13,13 @@ class controladorTarea extends Controller
      */
     public function index()
     {
-        return view('layouts.index');
+        $queryTareas = Tarea::get();
+        return view('showTasks', ['tareas' => $queryTareas]);
     }
     /**
      * Show the form for creating a new task
      */
-    public function showAdd()
+    public function create()
     {
         return view('addTaskForm');
     }
@@ -26,7 +27,7 @@ class controladorTarea extends Controller
     /**
      * Create a new task
      */
-    public function create(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'nombre' => 'required'
@@ -41,17 +42,17 @@ class controladorTarea extends Controller
     /**
      *  Shows the current tasks
      */
-    public function showTasks()
-    {
-        // $queryTareas = DB::table('tareas')->get();KC
-        $queryTareas = Tarea::get();
-        return view('showTasks', ['tareas' => $queryTareas]);
-    }
+    // public function showTasks()
+    // {
+    //     // $queryTareas = DB::table('tareas')->get();KC
+    //     $queryTareas = Tarea::get();
+    //     return view('showTasks', ['tareas' => $queryTareas]);
+    // }
 
     /**
      * Show the form for search tasks
      */
-    public function showSearchForm()
+    public function showForm()
     {
         return view('searchForm');
     }
@@ -59,7 +60,7 @@ class controladorTarea extends Controller
     /**
      *  Makes the task search
      */
-    public function showSearchTask(Request $request)
+    public function show(Request $request)
     {
         $searchedQuery = Tarea::where('nombre', 'like', '%' . $request->get('search') . '%')->get();
         return view('searchedTask', ['tareas' => $searchedQuery]);
@@ -97,6 +98,11 @@ class controladorTarea extends Controller
     public function destroy($id, $route)
     {
         Tarea::destroy($id);
+        print_r($route);
+        if($route == "null"){
+            return redirect('/');
+
+        }
         return redirect('/' . $route);
     }
 }
