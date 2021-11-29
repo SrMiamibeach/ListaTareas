@@ -10,7 +10,6 @@
             <thead>
                 <tr>
                     <th scope="col">Task</th>
-                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody class="align-middle">
@@ -18,11 +17,6 @@
                 @foreach($tareas as $tarea)
                 <tr>
                     <td>{{ $tarea->nombre }}</td>
-                    <td class="text-center">
-                        <form method="POST" action="/tarea/{{$tarea->id}}/showSearchTask">
-                            {{ @csrf_field() }}
-                        </form>
-                    </td>
                 </tr>
                 @endforeach
                 @endif

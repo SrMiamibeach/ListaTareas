@@ -95,14 +95,9 @@ class controladorTarea extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, $route)
+    public function destroy($id)
     {
         Tarea::destroy($id);
-        print_r($route);
-        if($route == "null"){
-            return redirect('/');
-
-        }
-        return redirect('/' . $route);
+        return redirect('/');
     }
 }

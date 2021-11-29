@@ -26,4 +26,4 @@ Route::get('/showSearchTask', [controladorTarea::class, 'showForm'])->name('sear
 
 Route::get('/searchedTask', [controladorTarea::class, 'show'])->name('search');
 
-Route::delete('/tarea/{id}/{route}', [controladorTarea::class, 'destroy']);
+Route::delete('/tarea/{id}', [controladorTarea::class, 'destroy']);
