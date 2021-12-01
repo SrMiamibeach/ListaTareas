@@ -1,0 +1,1 @@
+<option value="{{$usuario->id}}">{{$usuario->nombre}}</option>

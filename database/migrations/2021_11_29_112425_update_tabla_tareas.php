@@ -15,7 +15,7 @@ class UpdateTablaTareas extends Migration
     {
         Schema::table('tareas',function(Blueprint $table){
             $table->unsignedBigInteger('usuario_id');
-            $table->foreign('usuario_id')->references('id')->on('tareas')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -26,7 +26,8 @@ class UpdateTablaTareas extends Migration
      */
     public function down()
     {
-        Schema::table('tareas',function($table){
+        Schema::table('tareas',function(Blueprint $table){
+            $table->dropForeign('usuario_id');
             $table->dropColumn('usuario_id');
         });
     }

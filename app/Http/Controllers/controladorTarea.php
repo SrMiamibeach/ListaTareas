@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Tarea;
+use App\Models\Usuario;
 
 class controladorTarea extends Controller
 {
@@ -21,7 +22,8 @@ class controladorTarea extends Controller
      */
     public function create()
     {
-        return view('addTaskForm');
+        $usuarios = Usuario::all();
+        return view('addTaskForm',['usuarios' => $usuarios]);
     }
 
     /**
