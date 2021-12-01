@@ -9,7 +9,8 @@ class Tarea extends Model
 {
     use HasFactory;
     protected $fillable = [ 
-        'nombre'
+        'nombre',
+        'usuario_id'
     ]; 
     public function usuario()
 	{

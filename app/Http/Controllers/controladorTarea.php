@@ -36,7 +36,8 @@ class controladorTarea extends Controller
         ]);
 
         Tarea::create([
-            'nombre' => $request->get('nombre')
+            'nombre' => $request->get('nombre'),
+            'usuario_id' => $request->get('usuarioId')
         ]);
         return redirect('/viewAddTask');
     }
