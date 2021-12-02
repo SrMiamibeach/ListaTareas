@@ -8,8 +8,13 @@
         <strong>Task Name</strong>
         <form method="POST" action="/tarea">
             {{ @csrf_field() }}
-
+            @error('nombre')
+            <div class="alert alert-danger" role="alert">
+                @message
+            </div>
+            @enderror
             <input type="text" name="nombre" class="form-control" placeholder="Task Name" />
+
             <br>
             <div class="row">
                 <div class="col-6">
@@ -18,15 +23,18 @@
                         @if(count($usuarios) > 0)
                         @each('partials.option',$usuarios,'usuario')
                         @endif
-                    </select>
+                    </select><br>
+                    <button type="submit" class="btn border ">Add Task</button>
+
                 </div>
-            </div><br>
-            @error('nombre')
-            <div class="alert alert-danger" role="alert">
-                Do not leave empty
+                <div class="col-6">
+                    @error('usuarioId')
+                    <div class="alert alert-danger" role="alert">
+                        @message
+                    </div>
+                    @enderror
+                </div>
             </div>
-            @enderror
-            <button type="submit" class="btn border ">Add Task</button>
         </form>
     </div>
 </div>
@@ -38,14 +46,19 @@
         <strong>User</strong>
         <form method="POST" action="/addUser">
             {{ @csrf_field() }}
-            <input type="text" name="nombre" class="form-control" placeholder="Name" />
-            <br>
-            <input type="text" name="apellidos" class="form-control" placeholder="Surname" />
             @error('nombre')
             <div class="alert alert-danger" role="alert">
-                Do not leave empty
+                Don't leave the name empty
             </div>
             @enderror
+            <input type="text" name="nombre" class="form-control" placeholder="Name" />
+            <br>
+            @error('nombre')
+            <div class="alert alert-danger" role="alert">
+                Don't leave the surname empty
+            </div>
+            @enderror
+            <input type="text" name="apellidos" class="form-control" placeholder="Surname" />
             <br>
             <button type="submit" class="btn border ">Add User</button>
         </form>

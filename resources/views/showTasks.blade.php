@@ -5,7 +5,7 @@
     <div class="col-4 bg-light border">
         <p class="h4 pt-2">Current Tasks</p>
     </div>
-    <div class="col-6 border pt-2 pb-4">
+    <div class="col-4 border pt-2 pb-4">
         <table class="table table-striped">
             <thead>
                 <tr>

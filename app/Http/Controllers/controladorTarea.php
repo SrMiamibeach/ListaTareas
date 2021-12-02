@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Http\Requests\StoreTareas;
 use App\Models\Tarea;
 use App\Models\Usuario;
 
@@ -14,10 +14,8 @@ class controladorTarea extends Controller
      */
     public function index()
     {
-        $queryTareas = DB::table('tareas')
-        ->join('usuarios', 'tareas.usuario_id', '=', 'usuarios.id')
-        ->get();
-        return view('showTasks', ['tareas' => $queryTareas]);
+        $data = Tarea::with('usuario')->get();
+        return view('showTasks', ['tareas' => $data]);
     }
     /**
      * Show the form for creating a new task
@@ -25,34 +23,21 @@ class controladorTarea extends Controller
     public function create()
     {
         $usuarios = Usuario::all();
-        return view('addTaskForm',['usuarios' => $usuarios]);
+        return view('addTaskForm', ['usuarios' => $usuarios]);
     }
 
     /**
      * Create a new task
      */
-    public function store(Request $request)
+    public function store(StoreTareas $request)
     {
-        $request->validate([
-            'nombre' => 'required'
-        ]);
-
+        $request->rules();
         Tarea::create([
             'nombre' => $request->get('nombre'),
             'usuario_id' => $request->get('usuarioId')
         ]);
         return redirect('/viewAddTask');
     }
-
-    /**
-     *  Shows the current tasks
-     */
-    // public function showTasks()
-    // {
-    //     // $queryTareas = DB::table('tareas')->get();KC
-    //     $queryTareas = Tarea::get();
-    //     return view('showTasks', ['tareas' => $queryTareas]);
-    // }
 
     /**
      * Show the form for search tasks
