@@ -15,8 +15,8 @@ class controladorTarea extends Controller
     public function index()
     {
         $queryTareas = DB::table('tareas')
-        ->leftJoin('usuarios', 'tareas.usuario_id', '=', 'usuarios.id')
-        ->get();;
+        ->join('usuarios', 'tareas.usuario_id', '=', 'usuarios.id')
+        ->get();
         return view('showTasks', ['tareas' => $queryTareas]);
     }
     /**
