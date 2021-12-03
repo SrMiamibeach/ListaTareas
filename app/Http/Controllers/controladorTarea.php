@@ -31,7 +31,7 @@ class controladorTarea extends Controller
      */
     public function store(StoreTareas $request)
     {
-        $request->rules();
+        $request->validate();
         Tarea::create([
             'nombre' => $request->get('nombre'),
             'usuario_id' => $request->get('usuarioId')

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreUsuarios;
 
 class UsuarioController extends Controller
 {
@@ -15,9 +16,9 @@ class UsuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUsuarios $request)
     {
-
+        $request->validate();
         Usuario::create([
             'nombre' => $request->get('nombre'),
             'apellidos' => $request->get('apellidos')

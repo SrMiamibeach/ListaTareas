@@ -10,7 +10,7 @@
             {{ @csrf_field() }}
             @error('nombre')
             <div class="alert alert-danger" role="alert">
-                @message
+                {{ $message }}
             </div>
             @enderror
             <input type="text" name="nombre" class="form-control" placeholder="Task Name" />
@@ -30,7 +30,7 @@
                 <div class="col-6">
                     @error('usuarioId')
                     <div class="alert alert-danger" role="alert">
-                        @message
+                        {{ $message }}
                     </div>
                     @enderror
                 </div>
@@ -48,12 +48,12 @@
             {{ @csrf_field() }}
             @error('nombre')
             <div class="alert alert-danger" role="alert">
-                Don't leave the name empty
+                {{ $message }}
             </div>
             @enderror
             <input type="text" name="nombre" class="form-control" placeholder="Name" />
             <br>
-            @error('nombre')
+            @error('apellidos')
             <div class="alert alert-danger" role="alert">
                 Don't leave the surname empty
             </div>
