@@ -8,12 +8,12 @@
         <strong>Task Name</strong>
         <form method="POST" action="/tarea">
             {{ @csrf_field() }}
-            @error('nombre')
+            @error('Taskname')
             <div class="alert alert-danger" role="alert">
                 {{ $message }}
             </div>
             @enderror
-            <input type="text" name="nombre" class="form-control" placeholder="Task Name" />
+            <input type="text" name="Taskname" class="form-control" placeholder="Task Name" />
 
             <br>
             <div class="row">
@@ -46,19 +46,19 @@
         <strong>User</strong>
         <form method="POST" action="/addUser">
             {{ @csrf_field() }}
-            @error('nombre')
+            @error('nombreUser')
             <div class="alert alert-danger" role="alert">
                 {{ $message }}
             </div>
             @enderror
-            <input type="text" name="nombre" class="form-control" placeholder="Name" />
+            <input type="text" name="nombreUser" class="form-control" placeholder="Name" />
             <br>
-            @error('apellidos')
+            @error('appellidosUser')
             <div class="alert alert-danger" role="alert">
                 Don't leave the surname empty
             </div>
             @enderror
-            <input type="text" name="apellidos" class="form-control" placeholder="Surname" />
+            <input type="text" name="appellidosUser" class="form-control" placeholder="Surname" />
             <br>
             <button type="submit" class="btn border ">Add User</button>
         </form>

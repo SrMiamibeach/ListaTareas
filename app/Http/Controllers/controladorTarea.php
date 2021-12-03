@@ -33,7 +33,7 @@ class controladorTarea extends Controller
     {
         $request->validate();
         Tarea::create([
-            'nombre' => $request->get('nombre'),
+            'nombre' => $request->get('Taskname'),
             'usuario_id' => $request->get('usuarioId')
         ]);
         return redirect('/viewAddTask');

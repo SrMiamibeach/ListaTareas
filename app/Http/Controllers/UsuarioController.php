@@ -20,8 +20,8 @@ class UsuarioController extends Controller
     {
         $request->validate();
         Usuario::create([
-            'nombre' => $request->get('nombre'),
-            'apellidos' => $request->get('apellidos')
+            'nombre' => $request->get('nombreUser'),
+            'apellidos' => $request->get('appellidosUser')
         ]);
         return redirect('/viewAddTask');
     }

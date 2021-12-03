@@ -24,16 +24,16 @@ class StoreUsuarios extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => 'required',
-            'appellidos' => 'required'
+            'nombreUser' => 'required',
+            'appellidosUser' => 'required'
         ];
     }
 
     public function messages()
     {
         return [
-            'nombre.required' => 'Dont leave the name empty',
-            'appellidos.required' => 'Dont leave the name empty',
+            'nombreUser.required' => 'Dont leave the name empty',
+            'appellidosUser.required' => 'Dont leave the name empty',
         ];
     }
 }
