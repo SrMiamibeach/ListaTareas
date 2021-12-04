@@ -1,5 +1,5 @@
 @extends('layouts.index')
-@section('addTasks')
+@section('addBlock')
 <div class="row d-flex flex-column align-content-center">
     <div class="col-4 bg-light border">
         <p class="h4 pt-2">New Task</p>
@@ -8,12 +8,12 @@
         <strong>Task Name</strong>
         <form method="POST" action="/tarea">
             {{ @csrf_field() }}
-            @error('Taskname')
+            @error('taskName')
             <div class="alert alert-danger" role="alert">
                 {{ $message }}
             </div>
             @enderror
-            <input type="text" name="Taskname" class="form-control" placeholder="Task Name" />
+            <input type="text" name="taskName" class="form-control" placeholder="Task Name" />
 
             <br>
             <div class="row">
@@ -53,12 +53,12 @@
             @enderror
             <input type="text" name="nombreUser" class="form-control" placeholder="Name" />
             <br>
-            @error('appellidosUser')
+            @error('apellidosUser')
             <div class="alert alert-danger" role="alert">
-                Don't leave the surname empty
+                {{ $message }}
             </div>
             @enderror
-            <input type="text" name="appellidosUser" class="form-control" placeholder="Surname" />
+            <input type="text" name="apellidosUser" class="form-control" placeholder="Surname" />
             <br>
             <button type="submit" class="btn border ">Add User</button>
         </form>

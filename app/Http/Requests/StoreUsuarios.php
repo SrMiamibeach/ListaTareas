@@ -24,8 +24,12 @@ class StoreUsuarios extends FormRequest
     public function rules()
     {
         return [
+            /**
+             * Con la validacion de abajo ariamos que cada nombre de usuario fuera unico
+             * 'nombreUser' => 'required|unique:App\Models\Usuario,nombre',
+             */
             'nombreUser' => 'required',
-            'appellidosUser' => 'required'
+            'apellidosUser' => 'required'
         ];
     }
 
@@ -33,7 +37,8 @@ class StoreUsuarios extends FormRequest
     {
         return [
             'nombreUser.required' => 'Dont leave the name empty',
-            'appellidosUser.required' => 'Dont leave the name empty',
+            //'nombreUser.unique' => 'That user already exists',
+            'apellidosUser.required' => 'Dont leave the Surname empty',
         ];
     }
 }

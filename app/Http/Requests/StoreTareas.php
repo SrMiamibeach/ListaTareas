@@ -24,7 +24,7 @@ class StoreTareas extends FormRequest
     public function rules()
     {
         return [
-            'Taskname' => 'required',
+            'taskName' => 'required',
             'usuarioId' => 'required|numeric'
         ];
     }
@@ -32,8 +32,8 @@ class StoreTareas extends FormRequest
     public function messages()
     {
         return [
-            'Taskname.required' => 'Dont leave the name empty',
-            'usuarioId.required' => 'Choose a user',
+            'taskName.required' => 'Dont leave the name empty',
+            'usuarioId.numeric' => 'Choose a user',
         ];
     }
 }

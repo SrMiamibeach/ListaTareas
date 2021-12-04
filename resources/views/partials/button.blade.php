@@ -1,6 +1,6 @@
 <tr>
     <td>{{ $tarea->nombre }}</td>
-    <td>{{$tarea->usuario->nombre}}</td>
+    <td>{{ $tarea->usuario->nombre}}</td>
     <td class="text-center">
         <form method="POST" action="/tarea/{{$tarea->id}}">
             {{ @csrf_field() }}

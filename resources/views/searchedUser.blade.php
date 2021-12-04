@@ -1,6 +1,6 @@
-@extends('searchForm')
+@extends('searchUserForm')
 
-@section('searchedTasks')
+@section('searchedUser')
 <div class="row d-flex flex-column align-content-center mt-2">
     <div class="col-4 bg-light border">
         <p class="h4 pt-2">Current Tasks</p>
@@ -10,16 +10,20 @@
             <thead>
                 <tr>
                     <th scope="col">Task</th>
-                    <th scope="col">User</th>
+                    <th scope="col">Created at</th>
+                    <th scope="col">User Name</th>
                 </tr>
             </thead>
             <tbody class="align-middle">
-                @if(count($tareas) > 0)
-                @foreach($tareas as $tarea)
+                @if(count($users) > 0)
+                @foreach($users as $user)
+                @foreach($user->tareas as $task)
                 <tr>
-                    <td>{{ $tarea->nombre }}</td>
-                    <td>{{ $tarea->usuario->nombre }}</td>
+                    <td>{{ $task->nombre }}</td>
+                    <td>{{ $task->created_at }}</td>
+                    <td>{{ $user->nombre }}</td>
                 </tr>
+                @endforeach
                 @endforeach
                 @endif
 

@@ -31,10 +31,10 @@ class controladorTarea extends Controller
      */
     public function store(StoreTareas $request)
     {
-        $request->validate();
+        $request->validated();
         Tarea::create([
-            'nombre' => $request->get('Taskname'),
-            'usuario_id' => $request->get('usuarioId')
+            'nombre' => $request->get('taskName'),
+            'usuario_id' => (int)$request->get('usuarioId')
         ]);
         return redirect('/viewAddTask');
     }
@@ -52,7 +52,7 @@ class controladorTarea extends Controller
      */
     public function show(Request $request)
     {
-        $searchedQuery = Tarea::where('nombre', 'like', '%' . $request->get('search') . '%')->get();
+        $searchedQuery = Tarea::with('usuario')->where('nombre', 'like', '%' . $request->get('search') . '%')->get();
         return view('searchedTask', ['tareas' => $searchedQuery]);
     }
 

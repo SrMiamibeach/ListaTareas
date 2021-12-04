@@ -30,4 +30,8 @@ Route::get('/searchedTask', [controladorTarea::class, 'show'])->name('search');
 
 Route::delete('/tarea/{id}', [controladorTarea::class, 'destroy']);
 
-Route::POST('/addUser', [UsuarioController::class, 'store']);
+Route::post('/addUser', [UsuarioController::class, 'store']);
+
+Route::get('/searchUser', [UsuarioController::class, 'searchForm']);
+
+Route::post('/searchedUser', [UsuarioController::class, 'show']);

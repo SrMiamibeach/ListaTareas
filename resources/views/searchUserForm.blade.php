@@ -7,12 +7,15 @@
     </div>
     <div class="col-4 border pt-2 pb-4">
         <strong>Search</strong>
-        <form action="/searchedTask">
-            <input type="text" name="search" class="form-control" placeholder="enter your search" />
+        <form method="post" action="/searchedUser">
+            {{ @csrf_field() }}
+            <input type="text" name="name" class="form-control" placeholder="Enter user name" />
+            <br>
+            <input type="date" name="date" class="form-control" />
             <br>
             <button type="submit" class="btn border ">Search</button>
         </form>
     </div>
 </div>
-@yield('searchedTasks')
+@yield('searchedUser')
 @endsection
